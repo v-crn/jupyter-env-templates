@@ -56,8 +56,8 @@ ENV PYTHONUNBUFFERED=true
 ENV PYTHONPATH /root:$PYTHONPATH
 
 # --- Install python packages ---
-COPY --from=builder $WORK_DIR/requirements.txt $WORK_DIR
-RUN pip install -r $WORK_DIR/requirements.txt
+COPY --from=builder requirements.txt /tmp
+RUN pip install -r /tmp/requirements.txt
 
 # --- Create the necessary links and cache ---
 RUN ldconfig
