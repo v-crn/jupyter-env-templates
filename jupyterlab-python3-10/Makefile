@@ -19,6 +19,7 @@ scan_image:
 tag:
 	docker tag ${IMAGE_ID} ${DOCKER_HUB_USERNAME}/${IMAGE_NAME}
 
+
 .PHONY: push_image
 push_image:
 	docker push ${DOCKER_HUB_USERNAME}/${IMAGE_NAME}
