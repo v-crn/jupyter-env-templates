@@ -1,0 +1,68 @@
+[tool.poetry]
+name = "lab"
+version = "1.0.0"
+description = ""
+authors = ["v-crn <var.cyrano@gmail.com>"]
+
+[virtualenvs]
+in-project = true
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.11"
+python-dotenv = "*"
+numpy = "*"
+pandas = "*"
+tqdm = "*"
+matplotlib = "*"
+japanize-matplotlib = "*"
+seaborn = "*"
+scikit-learn = "*"
+scipy = "*"
+
+[tool.poetry.dev-dependencies]
+isort = "*"
+click = "*"
+black = "*"
+autoflake = "*"
+flake8 = "*"
+mypy = "*"
+pyproject-flake8 = "*"
+pytest = "*"
+jupyterlab = "*"
+ipywidgets = "*"
+jupyterlab-widgets = "*"
+jupyterlab-git = "*"
+jupytext = "*"
+jupyterlab-code-formatter = "*"
+jupyterlab-lsp = "*"
+lckr-jupyterlab-variableinspector = "*"
+jupyterlab-flake8 = "*"
+jupyter-kite = "*"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+
+[tool.flake8]
+max-line-length = 88
+ignore = "E203,W503,W504"
+max-complexity = 20
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+strict_optional = "True"
+warn_redundant_casts = "True"
+warn_unused_ignores = "True"
+disallow_any_generics = "True"
+check_untyped_defs = "True"
+disallow_untyped_defs = "True"
+ignore_missing_imports = "True"
+
+[[tool.mypy.overrides]]
+module = ["matplotlib.*", "tqdm.*", "pandas.*", "scipy"]
+ignore_missing_imports = "True"
