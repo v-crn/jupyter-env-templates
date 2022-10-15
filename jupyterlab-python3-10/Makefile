@@ -21,5 +21,5 @@ tag:
 
 
 .PHONY: push_image
-push_image:
+push_image: tag
 	docker push ${DOCKER_HUB_USERNAME}/${IMAGE_NAME}
