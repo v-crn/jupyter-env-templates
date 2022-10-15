@@ -12,6 +12,7 @@ RUN pip install --no-cache-dir poetry \
 
 FROM python:3.8-slim AS runner
 WORKDIR $WORK_DIR
+USER $USER
 
 # --- Locale ---
 RUN apt-get update && apt-get install -y locales
