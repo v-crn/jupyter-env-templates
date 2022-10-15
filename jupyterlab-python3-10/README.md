@@ -1,4 +1,4 @@
-# jupyterlab
+# jupyterlab-python3-10
 
 ## Specifications
 

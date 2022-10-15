@@ -13,6 +13,6 @@ services:
     ports:
       - ${PORT}:${PORT}
     volumes:
-      - ./:${WORK_DIR}:cached
+      - ./:${WORK_DIR}
     entrypoint:
       - scripts/run.sh

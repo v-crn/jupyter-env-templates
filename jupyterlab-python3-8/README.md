@@ -1,4 +1,4 @@
-# jupyterlab
+# jupyterlab-python3-8
 
 ## Specifications
 
@@ -7,5 +7,5 @@
 
 ## Quick Start
 
-1. Create .env (see .env.template)
+1. Create `.env` (see `.env.template`)
 2. Run `docker-compose up`
