@@ -1,14 +1,22 @@
 # cuda-tutorial
 
-## NVIDIA Container Toolkit
+## 概要
 
-### コンテナから nvidia-smi コマンドが利用できることを確認
+- [nvidia/cuda:11.8.0-base-ubuntu20.04](https://hub.docker.com/layers/nvidia/cuda/11.8.0-base-ubuntu20.04/images/sha256-3ae1765f69e197009b583dbb548b321cc0cb2d0dbbfaf40fd5a35402b456d318?context=explore)
+- COMPRESSED SIZE: 33.67 MB
+- コンテナで nvidia-smi コマンドが使えるかどうか確認するのに使える
+
+## 利用できるコマンド
+
+- `nvidia-smi`
+
+## 動作確認
 
 ```sh
 docker-compose up
 ```
 
-次のような表示が出れば成功。
+正常な実行結果の例:
 
 ```console
 Attaching to cuda-tutorials-test-1

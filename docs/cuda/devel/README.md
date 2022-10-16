@@ -1,8 +1,24 @@
 # devel
 
-- `cvnn` コマンドが使える
+## 概要
 
-正常な出力結果の例:
+- [nvidia/cuda:11.8.0-devel-ubuntu20.04](https://hub.docker.com/layers/nvidia/cuda/11.8.0-devel-ubuntu20.04/images/sha256-b3f7d0516b345bbfb5a55bcd9b09db7a1e085a48362dc98c85c09df06de6e164?context=explore)
+- COMPRESSED SIZE: 2.17 GB
+  - base よりイメージサイズが結構大きい
+- コンテナで nvidia-smi コマンドと nvcc コマンドが使えるかどうか確認するのに使える
+
+## 利用できるコマンド
+
+- `nvidia-smi`
+- `cvnn`
+
+## 動作確認
+
+```sh
+docker-compose up
+```
+
+正常な実行結果の例:
 
 ```console
 Attaching to devel-test-devel-1
