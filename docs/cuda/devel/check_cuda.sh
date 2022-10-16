@@ -5,4 +5,7 @@ echo "Check nvcc (cuDNN)\n"
 nvcc -V
 echo
 echo "Check env variables\n"
-env | grep NV
+env
+echo
+echo "Installed package list\n"
+dpkg -l | grep -i cuda
