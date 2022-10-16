@@ -5,6 +5,7 @@
 ### dotfiles ###
 .config/
 .nv/
+.backup/
 .env
 
 
