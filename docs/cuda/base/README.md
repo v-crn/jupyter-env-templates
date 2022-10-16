@@ -5,8 +5,6 @@
 ### コンテナから nvidia-smi コマンドが利用できることを確認
 
 ```sh
-cd docs/cuda/cuda-tutorial
-
 docker-compose up
 ```
 

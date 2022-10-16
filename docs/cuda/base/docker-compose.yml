@@ -1,7 +1,9 @@
 services:
-  test:
-    image: nvidia/cuda:11.8.0-base-ubuntu20.04
-    command: nvidia-smi
+  test-devel:
+    image: nvidia/cuda:11.8.0-devel-ubuntu20.04
+    volumes:
+      - ./check_gpu.sh:/check_gpu.sh
+    command: sh check_gpu.sh
     deploy:
       resources:
         reservations:
