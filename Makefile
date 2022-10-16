@@ -28,6 +28,7 @@ nlp-ja-pytorch-python3.8:
 .PHONY: all
 all: python3.8 python3.10 nlp-ja-python3.8 nlp-ja-pytorch-python3.8
 
+
 .PHONY: clear
 clear:
 	sudo rm -rf jupyterlab-python3-8

@@ -1,6 +1,7 @@
 FROM python:3.8-slim AS builder
 WORKDIR $WORK_DIR
-RUN apt-get update && apt-get install -y --no-install-recommends python3-pip \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3-pip \
     && update-alternatives --install /usr/bin/python python /usr/bin/python3 1 \
     && update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1 \
     && pip install --no-cache-dir --upgrade setuptools \
@@ -49,7 +50,8 @@ RUN npm install n -g \
     && apt-get purge -y nodejs npm
 
 # --- Python ---
-RUN apt-get update && apt-get install -y --no-install-recommends python3-pip \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3-pip \
     && update-alternatives --install /usr/bin/python python /usr/bin/python3 1 \
     && update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1 \
     && pip install --no-cache-dir --upgrade setuptools \
