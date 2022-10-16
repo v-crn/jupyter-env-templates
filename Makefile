@@ -4,25 +4,25 @@ BASE:=jupyterlab
 .PHONY: python3.8
 python3.8:
 	${eval CARGO:=python3-8}
-	sh scripts/functions/generate.sh ${BACKUP_DIR} ${BASE} assets/${CARGO} ${BASE}-${CARGO}
+	sh scripts/generate.sh ${BACKUP_DIR} ${BASE} assets/${CARGO} ${BASE}-${CARGO}
 
 
 .PHONY: python3.10
 python3.10:
 	${eval CARGO:=python3-10}
-	sh scripts/functions/generate.sh ${BACKUP_DIR} ${BASE} assets/${CARGO} ${BASE}-${CARGO}
+	sh scripts/generate.sh ${BACKUP_DIR} ${BASE} assets/${CARGO} ${BASE}-${CARGO}
 
 
 .PHONY: nlp-ja-python3.8
 nlp-ja-python3.8:
 	${eval CARGO:=nlp-ja-python3-8}
-	sh scripts/functions/generate.sh ${BACKUP_DIR} ${BASE} assets/${CARGO} ${BASE}-${CARGO}
+	sh scripts/generate.sh ${BACKUP_DIR} ${BASE} assets/${CARGO} ${BASE}-${CARGO}
 
 
 .PHONY: nlp-ja-pytorch-python3.8
 nlp-ja-pytorch-python3.8:
 	${eval CARGO:=nlp-ja-pytorch-python3-8}
-	sh scripts/functions/generate.sh ${BACKUP_DIR} ${BASE} assets/${CARGO} ${BASE}-${CARGO}
+	sh scripts/generate.sh ${BACKUP_DIR} ${BASE} assets/${CARGO} ${BASE}-${CARGO}
 
 
 .PHONY: all
