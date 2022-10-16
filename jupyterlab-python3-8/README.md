@@ -1,4 +1,4 @@
-# jupyterlab-python3-8
+# jupyterlab:python3.8
 
 ## Specifications
 

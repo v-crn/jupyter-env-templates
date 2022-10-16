@@ -1,4 +1,6 @@
 include .env
+include makefiles/formatter.mk
+include makefiles/pytest.mk
 
 .PHONY: bash
 bash:
@@ -22,4 +24,4 @@ tag:
 
 .PHONY: push_image
 push_image: tag
-	docker push ${DOCKER_HUB_USERNAME}/${IMAGE_NAME}
+	docker push ${DOCKER_HUB_USERNAME}/${IMAGE_NAME}:${TAG}

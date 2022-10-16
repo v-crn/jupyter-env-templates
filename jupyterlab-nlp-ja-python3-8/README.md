@@ -1,4 +1,4 @@
-# jupyterlab-nlp-ja-pytorch:python3-8
+# jupyterlab-nlp-ja:python3.8
 
 ## Specifications
 
@@ -10,11 +10,6 @@
 - [MeCab: Yet Another Part-of-Speech and Morphological Analyzer](https://taku910.github.io/mecab/)
   - [mecab-ipadic-neologd](https://github.com/neologd/mecab-ipadic-neologd/blob/master/README.ja.md)
 - [GiNZA - Japanese NLP Library | Universal Dependenciesに基づくオープンソース日本語NLPライブラリ](https://megagonlabs.github.io/ginza/)
-
-### Deep Learning Frameworks
-
-- [transformers · PyPI](https://pypi.org/project/transformers/)
-- [torch · PyPI](https://pypi.org/project/torch/#more-about-pytorch)
 
 ## Quick Start
 

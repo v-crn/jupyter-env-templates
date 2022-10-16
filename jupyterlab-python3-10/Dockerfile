@@ -3,8 +3,8 @@ WORKDIR $WORK_DIR
 RUN apt-get update && apt-get install -y --no-install-recommends python3-pip \
     && update-alternatives --install /usr/bin/python python /usr/bin/python3 1 \
     && update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1 \
-    && pip install --upgrade setuptools \
-    && pip install --upgrade pip
+    && pip install --no-cache-dir --upgrade setuptools \
+    && pip install --no-cache-dir --upgrade pip
 COPY pyproject.toml $WORK_DIR
 RUN pip install --no-cache-dir poetry \
     && poetry export --dev --without-hashes -f requirements.txt -o requirements.txt
@@ -15,12 +15,13 @@ WORKDIR $WORK_DIR
 USER $USER
 
 # --- Locale ---
-RUN apt-get update && apt-get install -y locales
-RUN localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends locales \
+    && localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
 ENV LANG ja_JP.UTF-8
 ENV LANGUAGE ja_JP:ja
 ENV LC_ALL ja_JP.UTF-8
-ENV TZ JST-9
+ENV TZ Asia/Tokyo
 
 # --- Device setting ---
 ENV TERM xterm
@@ -45,26 +46,25 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # --- Update nodejs & npm---
 RUN npm install n -g \
     && n stable \
-    && apt purge -y nodejs npm
+    && apt-get purge -y nodejs npm
 
 # --- Python ---
 RUN apt-get update && apt-get install -y --no-install-recommends python3-pip \
     && update-alternatives --install /usr/bin/python python /usr/bin/python3 1 \
     && update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1 \
-    && pip install --upgrade setuptools \
-    && pip install --upgrade pip
+    && pip install --no-cache-dir --upgrade setuptools \
+    && pip install --no-cache-dir --upgrade pip
 ENV PYTHONUNBUFFERED=true
 ENV PYTHONPATH /root:$PYTHONPATH
 
 # --- Install python packages ---
 COPY --from=builder requirements.txt /tmp
-RUN pip install -r /tmp/requirements.txt
+RUN pip install -r --no-cache-dir /tmp/requirements.txt
 
 # --- Create the necessary links and cache ---
-RUN ldconfig
-
 # --- Delete unnecessary packages ---
-RUN apt-get -y clean \
+RUN ldconfig \
+    && apt-get -y clean \
     && apt-get -y autoremove \
     && rm -rf /var/lib/apt/lists/*
 
