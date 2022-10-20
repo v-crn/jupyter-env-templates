@@ -1,17 +1,4 @@
-FROM python:3.10-slim AS builder
-WORKDIR $WORK_DIR
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    python3-pip \
-    && update-alternatives --install /usr/bin/python python /usr/bin/python3 1 \
-    && update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1 \
-    && pip install --no-cache-dir --upgrade setuptools \
-    && pip install --no-cache-dir --upgrade pip
-COPY pyproject.toml $WORK_DIR
-RUN pip install --no-cache-dir poetry \
-    && poetry export --dev --without-hashes -f requirements.txt -o requirements.txt
-
-
-FROM python:3.10-slim AS runner
+FROM python:3.10-slim
 WORKDIR $WORK_DIR
 USER $USER
 
@@ -57,11 +44,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && pip install --no-cache-dir --upgrade setuptools \
     && pip install --no-cache-dir --upgrade pip
 ENV PYTHONUNBUFFERED=true
-ENV PYTHONPATH /root:$PYTHONPATH
+ENV PYTHONPATH $WORK_DIR:$PYTHONPATH
+
+# --- Install python package manager ---
+RUN pip install --no-cache-dir poetry \
+    && poetry config virtualenvs.create false
 
 # --- Install python packages ---
-COPY --from=builder requirements.txt /tmp
-RUN pip install -r --no-cache-dir /tmp/requirements.txt
+COPY pyproject.toml $WORK_DIR
+RUN poetry install
 
 # --- Create the necessary links and cache ---
 # --- Delete unnecessary packages ---
@@ -71,4 +62,4 @@ RUN ldconfig \
     && rm -rf /var/lib/apt/lists/*
 
 COPY scripts/ $WORK_DIR/scripts/
-ENTRYPOINT [ "scripts/run.sh" ]
+CMD [ "sh", "scripts/run.sh" ]

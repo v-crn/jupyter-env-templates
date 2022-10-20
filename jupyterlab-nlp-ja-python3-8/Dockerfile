@@ -1,11 +1,4 @@
-FROM vcrn/jupyterlab-python3-8:latest AS builder
-WORKDIR $WORK_DIR
-COPY pyproject.toml $WORK_DIR
-RUN pip install --no-cache-dir poetry \
-    && poetry export --dev --without-hashes -f requirements.txt -o requirements.txt
-
-
-FROM vcrn/jupyterlab-python3-8 AS runner
+FROM vcrn/jupyterlab:python3.8
 WORKDIR $WORK_DIR
 USER $USER
 
@@ -17,24 +10,22 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     file
 
 # --- mecab-ipadic-NEologd ---
-RUN git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git \
-    && mecab-ipadic-neologd/bin/install-mecab-ipadic-neologd -n -y
-# To install all dictionaries:
-# && mecab-ipadic-neologd/bin/install-mecab-ipadic-neologd -n -a -y
-
 ENV MECABRC /etc/mecabrc
-RUN cp /etc/mecabrc /etc/mecabrc.default
-
-# Set mecab-ipadic-neologd as the default dictionary
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN cat /etc/mecabrc.default | sed -e "s/^dicdir/; dicdir/" \
+RUN git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git \
+    && mecab-ipadic-neologd/bin/install-mecab-ipadic-neologd -n -y \
+    # To install all dictionaries:
+    # && mecab-ipadic-neologd/bin/install-mecab-ipadic-neologd -n -a -y
+    && cp /etc/mecabrc /etc/mecabrc.default \
+    # Set mecab-ipadic-neologd as the default dictionary
+    && cat /etc/mecabrc.default | sed -e "s/^dicdir/; dicdir/" \
     | sed -e "/; dicdir/a dicdir = $(find / -path */mecab/dic/mecab-ipadic-neologd 2> /dev/null | head -1)" \
-    > $MECABRC
-RUN rm -rf mecab-ipadic-neologd
+    > $MECABRC \
+    && rm -rf mecab-ipadic-neologd
 
 # --- Install python packages ---
-COPY --from=builder requirements.txt /tmp
-RUN pip install -r --no-cache-dir /tmp/requirements.txt
+COPY pyproject.toml $WORK_DIR
+RUN poetry update
 
 # --- Create the necessary links and cache ---
 # --- Delete unnecessary packages ---
@@ -44,4 +35,4 @@ RUN ldconfig \
     && rm -rf /var/lib/apt/lists/*
 
 COPY scripts/ $WORK_DIR/scripts/
-ENTRYPOINT [ "scripts/run.sh" ]
+CMD [ "sh", "scripts/run.sh" ]

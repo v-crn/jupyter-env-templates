@@ -1,17 +1,10 @@
-FROM vcrn/jupyterlab-nlp-ja AS builder
-WORKDIR $WORK_DIR
-COPY pyproject.toml ./
-RUN pip install --no-cache-dir poetry \
-    && poetry export --dev --without-hashes -f requirements.txt -o requirements.txt
-
-
-FROM vcrn/jupyterlab-nlp-ja AS runner
+FROM vcrn/jupyterlab-nlp-ja:python3.8
 WORKDIR $WORK_DIR
 USER $USER
 
 # --- Install python packages ---
-COPY --from=builder requirements.txt /tmp
-RUN pip install -r --no-cache-dir /tmp/requirements.txt
+COPY pyproject.toml $WORK_DIR
+RUN poetry update
 
 # --- Create the necessary links and cache ---
 # --- Delete unnecessary packages ---
@@ -21,4 +14,4 @@ RUN ldconfig \
     && rm -rf /var/lib/apt/lists/*
 
 COPY scripts/ $WORK_DIR/scripts/
-ENTRYPOINT [ "scripts/run.sh" ]
+CMD [ "sh", "scripts/run.sh" ]
