@@ -9,15 +9,15 @@ in-project = true
 
 [tool.poetry.dependencies]
 python = ">=3.8,<3.11"
-python-dotenv = "*"
+japanize-matplotlib = "*"
+matplotlib = "*"
 numpy = "*"
 pandas = "*"
-tqdm = "*"
-matplotlib = "*"
-japanize-matplotlib = "*"
-seaborn = "*"
+python-dotenv = "*"
 scikit-learn = "*"
 scipy = "*"
+seaborn = "*"
+tqdm = "*"
 
 [tool.poetry.dev-dependencies]
 isort = "*"

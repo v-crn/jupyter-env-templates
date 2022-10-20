@@ -4,7 +4,7 @@ include makefiles/pytest.mk
 
 .PHONY: bash
 bash:
-	docker-compose exec ${CONTAINER_NAME} /bin/bash
+	docker-compose exec ${SERVICE_NAME} /bin/bash
 
 
 .PHONY: clear
@@ -19,7 +19,7 @@ scan_image:
 
 .PHONY: tag
 tag:
-	docker tag ${IMAGE_ID} ${DOCKER_HUB_USERNAME}/${IMAGE_NAME}
+	docker tag ${IMAGE_ID} ${DOCKER_HUB_USERNAME}/${IMAGE_NAME}:${TAG}
 
 
 .PHONY: push_image

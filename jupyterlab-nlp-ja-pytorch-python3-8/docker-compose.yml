@@ -1,6 +1,6 @@
 version: "3"
 services:
-  jupyterlab-nlp-ja-pytorch-python3-8:
+  lab:
     env_file: .env
     build:
       context: ./

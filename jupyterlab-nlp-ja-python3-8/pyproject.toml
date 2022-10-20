@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "jupyterlab"
+name = "lab"
 version = "1.0.0"
 description = ""
 authors = ["v-crn <var.cyrano@gmail.com>"]
@@ -9,17 +9,43 @@ in-project = true
 
 [tool.poetry.dependencies]
 python = ">=3.8,<3.11"
-neologdn = "*"
-mojimoji = "*"
-jaconv = "*"
 demoji = "*"
-nltk = "*"
-mecab-python3 = "*"
 ginza = "*"
+jaconv = "*"
+japanize-matplotlib = "*"
+matplotlib = "*"
+mecab-python3 = "*"
+mojimoji = "*"
+neologdn = "*"
+nltk = "*"
+numpy = "*"
+pandas = "*"
+python-dotenv = "*"
+scikit-learn = "*"
+scipy = "*"
+seaborn = "*"
+tqdm = "*"
 wordcloud = "*"
-nlplot = "*"
 
 [tool.poetry.dev-dependencies]
+isort = "*"
+click = "*"
+black = "*"
+autoflake = "*"
+flake8 = "*"
+mypy = "*"
+pyproject-flake8 = "*"
+pytest = "*"
+jupyterlab = "*"
+ipywidgets = "*"
+jupyterlab-widgets = "*"
+jupyterlab-git = "*"
+jupytext = "*"
+jupyterlab-code-formatter = "*"
+jupyterlab-lsp = "*"
+lckr-jupyterlab-variableinspector = "*"
+jupyterlab-flake8 = "*"
+jupyter-kite = "*"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
