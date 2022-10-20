@@ -12,7 +12,7 @@ generate() {
     fi
 
     echo "Copy contents of $base into $target"
-    cp -rPf $base $target
+    cp -rPf $base/. $target
 
     echo "Copy contents of $cargo_dir into $target"
     cp -rPfv $cargo_dir/. $target
