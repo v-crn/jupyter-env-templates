@@ -5,7 +5,7 @@ description = ""
 authors = ["v-crn <var.cyrano@gmail.com>"]
 
 [virtualenvs]
-in-project = true
+in-project = false
 
 [tool.poetry.dependencies]
 python = ">=3.8,<3.11"
