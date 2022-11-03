@@ -19,7 +19,7 @@ seaborn = "*"
 scikit-learn = "*"
 scipy = "*"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 isort = "*"
 click = "*"
 black = "*"
@@ -27,7 +27,6 @@ autoflake = "*"
 flake8 = "*"
 mypy = "*"
 pyproject-flake8 = "*"
-pytest = "*"
 jupyterlab = "*"
 ipywidgets = "*"
 jupyterlab-widgets = "*"
@@ -38,6 +37,9 @@ jupyterlab-lsp = "*"
 lckr-jupyterlab-variableinspector = "*"
 jupyterlab-flake8 = "*"
 jupyter-kite = "*"
+
+[tool.poetry.group.test.dependencies]
+pytest = "*"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
