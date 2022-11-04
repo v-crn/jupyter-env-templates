@@ -19,7 +19,7 @@ scipy = "*"
 seaborn = "*"
 tqdm = "*"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 autoflake = "*"
 black = "*"
 click = "*"
@@ -37,7 +37,11 @@ jupytext = "*"
 lckr-jupyterlab-variableinspector = "*"
 mypy = "*"
 pyproject-flake8 = "*"
+types-python-dateutil = "*"
+
+[tool.poetry.group.test.dependencies]
 pytest = "*"
+
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -62,6 +66,7 @@ disallow_any_generics = "True"
 check_untyped_defs = "True"
 disallow_untyped_defs = "True"
 ignore_missing_imports = "True"
+plugins = "numpy.typing.mypy_plugin"
 
 [[tool.mypy.overrides]]
 module = ["matplotlib.*", "tqdm.*", "pandas.*", "scipy"]
