@@ -51,6 +51,7 @@ ENV PATH $HOME/.local/bin:${PATH}
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN curl -sSL https://install.python-poetry.org | python3 - \
     && poetry config virtualenvs.create false
+
 # --- Install python packages ---
 COPY pyproject.toml $WORK_DIR
 RUN poetry install
