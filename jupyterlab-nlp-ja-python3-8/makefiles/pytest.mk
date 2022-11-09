@@ -5,4 +5,4 @@ FUNC=""
 
 .PHONY: test
 test:
-	docker-compose exec ${CONTAINER_NAME} pytest -s ${FILE} -k ${FUNC}
+	pytest -s ${FILE} -k ${FUNC}
