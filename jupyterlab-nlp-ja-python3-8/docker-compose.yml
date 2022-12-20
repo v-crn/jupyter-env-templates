@@ -14,5 +14,6 @@ services:
       - ${PORT}:${PORT}
     volumes:
       - ./:${WORK_DIR}
+      - ~/.ssh:${WORK_DIR}/.ssh
     entrypoint:
       - scripts/run.sh
