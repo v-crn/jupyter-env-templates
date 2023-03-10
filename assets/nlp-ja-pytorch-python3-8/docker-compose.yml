@@ -9,7 +9,7 @@ services:
     container_name: ${CONTAINER_NAME}
     hostname: localhost
     working_dir: ${WORK_DIR}
-    restart: always
+    restart: "no"
     ports:
       - ${PORT}:${PORT}
     volumes:
