@@ -1,9 +1,9 @@
-# jupyterlab
+# jupyterlab:python3.11
 
 ## Specifications
 
 - Ubuntu20.04
-- Python3.10
+- Python3.11
 
 ## Quick Start
 
