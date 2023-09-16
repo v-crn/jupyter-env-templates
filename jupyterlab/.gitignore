@@ -3,12 +3,8 @@
 
 
 ### dotfiles ###
-.env
-.config/
-.nv/
-.backup/
-.ssh/
-.gcloud/
+.*
+!.*.template
 
 
 ### Bash ###

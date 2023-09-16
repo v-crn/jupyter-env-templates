@@ -3,10 +3,8 @@
 
 
 ### dotfiles ###
-.env
-.config/
-.nv/
-.backup/
+.*
+!.*.template
 
 
 ### Bash ###
